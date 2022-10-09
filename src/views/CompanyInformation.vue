@@ -1,7 +1,7 @@
 <template>
-  <div id="companyHistory">
+  <div id="companyInformation">
     <!-- Page Header Start -->
-    <CommonHeader :header="header"/>
+    <CommonHeader :title="title" :category="category" :menu="menu"/>
     <!-- Page Header End -->
 
     <!--    Time Line Start-->
@@ -71,28 +71,29 @@
         </div>
       </div>
     </section>
-
     <!--    Time Line End-->
+
+    <companyContact :headerShow="false"/>
 
   </div>
 </template>
 
 <script>
-import CommonHeader from "@/views/common/CommonHeader";
+import CommonHeader from "@/views/common/CommonHeader.vue";
+import CompanyContact from "@/views/CompanyContact.vue";
 
 export default {
-  name: 'CompanyHistory',
+  name: 'CompanyInformation',
   data: function(){
     return{
-      header:{
-        title: '회사 연혁',
+        title: '회사정보',
         category: '회사소개',
-        name: '개요 및 연혁'
-      }
+        menu: '개요 및 연혁'
     }
   },
   components: {
-    CommonHeader
+    CommonHeader,
+    CompanyContact
   },
 }
 </script>

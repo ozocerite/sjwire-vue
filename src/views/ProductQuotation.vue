@@ -1,7 +1,7 @@
 <template>
   <div id="companyQuotation">
     <!-- Page Header Start -->
-    <CommonHeader :header="header"/>
+    <CommonHeader :title="title" :category="category"/>
     <!-- Page Header End -->
 
     <div class="container-fluid bg-light overflow-hidden px-lg-0" style="margin: 6rem 0;">
@@ -67,10 +67,8 @@ export default {
   name: 'ProductQuotation',
   data: function(){
     return{
-      header:{
         title: '견적신청',
-        category: '견적신청'
-      }
+        category: '견적신청',
     }
   },
   components: {

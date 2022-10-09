@@ -3,8 +3,8 @@ const webpack = require("webpack");
 
 module.exports = defineConfig({
   outputDir: './docs',
-  /*publicPath: process.env.NODE_ENV === "production" ? "/sjwire-vue/" : "/",*/
-  publicPath: '/sjwire-vue/',
+  publicPath: process.env.NODE_ENV === "production" ? "/sjwire-vue/" : "/",
+  /*publicPath: '/sjwire-vue/',*/
   transpileDependencies: true,
   lintOnSave: false,
   configureWebpack: {

@@ -21,7 +21,7 @@
           </div>
           <div class="h-100 d-inline-flex align-items-center">
             <small class="far fa-clock text-primary me-2"></small>
-            <small>운영시간 : AM 9 - PM 6 (월~금)</small>
+            <small>운영시간 : AM 8:30 - PM 6:00 (월~금)</small>
           </div>
         </div>
         <div class="col-lg-5 px-5 text-end">
@@ -36,7 +36,7 @@
     <!-- Topbar End -->
 
     <!-- Navbar Start -->
-    <nav class="navbar navbar-expand-lg bg-white navbar-light sticky-top p-0">
+    <nav class="navbar navbar-expand-lg bg-white navbar-light sticky-top p-0 shadow-sm">
       <router-link to="/" class="navbar-brand d-flex align-items-center border-end px-4 px-lg-5">
         <h2 class="m-0 text-primary">SJ Wire</h2>
       </router-link>
@@ -50,8 +50,7 @@
             <router-link to="/ceo" class="nav-link dropdown-toggle" active-class="active" name="company">회사소개</router-link>
             <div class="dropdown-menu bg-light m-0">
               <router-link to="/ceo" class="dropdown-item" active-class="active" name="company">대표 인사말</router-link>
-              <router-link to="/history" class="dropdown-item" active-class="active" name="company">개요/연혁</router-link>
-              <router-link to="/contact" class="dropdown-item" active-class="active" name="company">오시는길</router-link>
+              <router-link to="/company" class="dropdown-item" active-class="active" name="company">회사정보</router-link>
             </div>
           </div>
           <div class="nav-item dropdown">

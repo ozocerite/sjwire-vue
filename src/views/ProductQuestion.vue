@@ -1,7 +1,7 @@
 <template>
   <div id="productQuestion">
     <!-- Page Header Start -->
-    <CommonHeader :header="header"/>
+    <CommonHeader :title="title" :category="category" :menu="menu"/>
     <!-- Page Header End -->
 
     </div>
@@ -14,11 +14,9 @@ export default {
   name: 'ProductQuestion',
   data: function(){
     return{
-      header:{
         title: '문의게시판',
         category: '고객지원',
-        name: 'Q&A'
-      }
+        menu: 'Q&A'
     }
   },
   components: {

@@ -1,7 +1,7 @@
 <template>
   <div id="ceoComment">
     <!-- Page Header Start -->
-    <CommonHeader :header="header"/>
+    <CommonHeader :title="title" :category="category" :menu="menu"/>
     <!-- Page Header End -->
 
     <!-- About Start -->
@@ -49,11 +49,9 @@ export default {
   name: 'CeoComment',
   data: function(){
     return{
-      header:{
         title: '세진철망에 오신 것을 환영합니다',
         category: '회사소개',
-        name: '대표 인사말'
-      }
+        menu: '대표 인사말'
     }
   },
   components: {
