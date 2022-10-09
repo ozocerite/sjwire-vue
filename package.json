@@ -1,0 +1,76 @@
+{
+  "name": "sjwire-vue",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build",
+    "lint": "vue-cli-service lint"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ozocerite/sjwire-vue.git"
+  },
+  "publishConfig": {
+    "@ozocerite:registry": "https://npm.pkg.github.com"
+  },
+  "author": "HyeonKyeong Lee",
+  "dependencies": {
+    "@popperjs/core": "^2.11.6",
+    "bootstrap": "^5.0.0",
+    "core-js": "^3.8.3",
+    "jquery": "^3.4.1",
+    "jquery-ui": "^1.13.2",
+    "node-sass": "^7.0.3",
+    "popper": "^1.0.1",
+    "sass-loader": "^13.1.0",
+    "timeline-vuejs": "^1.1.7",
+    "vue": "^3.2.40",
+    "vue-router": "^4.0.13",
+    "vue3-carousel": "^0.2.0",
+    "vue3-timeline": "^1.2.3"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.12.16",
+    "@babel/eslint-parser": "^7.12.16",
+    "@vue/cli-plugin-babel": "~5.0.0",
+    "@vue/cli-plugin-eslint": "~5.0.0",
+    "@vue/cli-service": "~5.0.0",
+    "eslint": "^7.32.0",
+    "eslint-plugin-vue": "^8.0.3"
+  },
+  "eslintConfig": {
+    "root": true,
+    "env": {
+      "node": true,
+      "jquery": true
+    },
+    "extends": [
+      "plugin:vue/vue3-essential",
+      "eslint:recommended"
+    ],
+    "parserOptions": {
+      "parser": "@babel/eslint-parser"
+    },
+    "rules": {},
+    "globals": {
+      "todoEventBus": "readable"
+    }
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead",
+    "not ie 11"
+  ],
+  "description": "## Project setup ``` npm install ```",
+  "bugs": {
+    "url": "https://github.com/ozocerite/sjwire-vue/issues"
+  },
+  "homepage": "https://github.com/ozocerite/sjwire-vue#readme",
+  "main": "babel.config.js",
+  "keywords": [
+    "sjwire"
+  ],
+  "license": "ISC"
+}
