@@ -12,7 +12,7 @@
     "url": "git+https://github.com/ozocerite/sjwire-vue.git"
   },
   "publishConfig": {
-    "registry": "https://npm.pkg.github.com/"
+    "@ozocerite:registry": "https://npm.pkg.github.com"
   },
   "author": "HyeonKyeong Lee",
   "dependencies": {
