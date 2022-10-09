@@ -7,6 +7,14 @@
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ozocerite/sjwire-vue.git"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/"
+  },
+  "author": "HyeonKyeong Lee",
   "dependencies": {
     "@popperjs/core": "^2.11.6",
     "bootstrap": "^5.0.0",
@@ -54,5 +62,15 @@
     "last 2 versions",
     "not dead",
     "not ie 11"
-  ]
+  ],
+  "description": "## Project setup ``` npm install ```",
+  "bugs": {
+    "url": "https://github.com/ozocerite/sjwire-vue/issues"
+  },
+  "homepage": "https://github.com/ozocerite/sjwire-vue#readme",
+  "main": "babel.config.js",
+  "keywords": [
+    "sjwire"
+  ],
+  "license": "ISC"
 }
