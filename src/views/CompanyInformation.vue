@@ -4,74 +4,28 @@
     <CommonHeader :title="title" :category="category" :menu="menu"/>
     <!-- Page Header End -->
 
-    <!--    Time Line Start-->
-    <section style="background-color: #F0F2F5;">
-      <div class="container py-5">
-        <div class="main-timeline">
-          <div class="timeline left">
-            <div class="card">
-              <div class="card-body p-4">
-                <h3>2017</h3>
-                <p class="mb-0">Lorem ipsum dolor sit amet, quo ei simul congue exerci, ad nec admodum perfecto
-                  mnesarchum, vim ea mazim fierent detracto. Ea quis iuvaret expetendis his, te elit voluptua
-                  dignissim per, habeo iusto primis ea eam.</p>
-              </div>
+    <!-- Company Information Start -->
+    <div class="container-fluid bg-light overflow-hidden my-5 px-lg-0">
+      <div class="container about px-lg-0">
+        <div class="row g-0 mx-lg-0">
+          <div class="col-lg-5 ps-lg-0 wow fadeIn" data-wow-delay="0.1s" style="min-height: 400px;">
+            <div class="position-relative h-100">
+              <img class="position-absolute img-fluid w-100 h-100" src="../assets/solartec-template/img/about.jpg" style="object-fit: cover;" alt="">
             </div>
           </div>
-          <div class="timeline right">
-            <div class="card">
-              <div class="card-body p-4">
-                <h3>2016</h3>
-                <p class="mb-0">Lorem ipsum dolor sit amet, quo ei simul congue exerci, ad nec admodum perfecto
-                  mnesarchum, vim ea mazim fierent detracto. Ea quis iuvaret expetendis his, te elit voluptua
-                  dignissim per, habeo iusto primis ea eam.</p>
-              </div>
-            </div>
-          </div>
-          <div class="timeline left">
-            <div class="card">
-              <div class="card-body p-4">
-                <h3>2015</h3>
-                <p class="mb-0">Lorem ipsum dolor sit amet, quo ei simul congue exerci, ad nec admodum perfecto
-                  mnesarchum, vim ea mazim fierent detracto. Ea quis iuvaret expetendis his, te elit voluptua
-                  dignissim per, habeo iusto primis ea eam.</p>
-              </div>
-            </div>
-          </div>
-          <div class="timeline right">
-            <div class="card">
-              <div class="card-body p-4">
-                <h3>2012</h3>
-                <p class="mb-0">Lorem ipsum dolor sit amet, quo ei simul congue exerci, ad nec admodum perfecto
-                  mnesarchum, vim ea mazim fierent detracto. Ea quis iuvaret expetendis his, te elit voluptua
-                  dignissim per, habeo iusto primis ea eam.</p>
-              </div>
-            </div>
-          </div>
-          <div class="timeline left">
-            <div class="card">
-              <div class="card-body p-4">
-                <h3>2011</h3>
-                <p class="mb-0">Lorem ipsum dolor sit amet, quo ei simul congue exerci, ad nec admodum perfecto
-                  mnesarchum, vim ea mazim fierent detracto. Ea quis iuvaret expetendis his, te elit voluptua
-                  dignissim per, habeo iusto primis ea eam.</p>
-              </div>
-            </div>
-          </div>
-          <div class="timeline right">
-            <div class="card">
-              <div class="card-body p-4">
-                <h3>2007</h3>
-                <p class="mb-0">Lorem ipsum dolor sit amet, quo ei simul congue exerci, ad nec admodum perfecto
-                  mnesarchum, vim ea mazim fierent detracto. Ea quis iuvaret expetendis his, te elit voluptua
-                  dignissim per, habeo iusto primis ea eam.</p>
-              </div>
+          <div class="col-lg-7 about-text py-5 wow fadeIn" data-wow-delay="0.5s">
+            <div class="p-lg-5 pe-lg-0">
+              <p class="text-primary lead animated slideInRight"><i class="fa fa-leaf" aria-hidden="true"></i> Eco-Friendly Company</p>
+              <h2 class="text-primary animated slideInRight">사람과 자연이 함께하는 세진철망입니다</h2>
+              <p class="lead" style="color:#767a76;">우수한 기술력과 환경보호를 위해 부단한 노력으로 미래를 지켜나가겠습니다.
+                <br><br>~ 생산품목내역 표 ~
+              </p>
             </div>
           </div>
         </div>
       </div>
-    </section>
-    <!--    Time Line End-->
+    </div>
+    <!-- Company Information End -->
 
     <companyContact :headerShow="false"/>
 
@@ -86,9 +40,9 @@ export default {
   name: 'CompanyInformation',
   data: function(){
     return{
-        title: '회사정보',
+        title: '회사개요',
         category: '회사소개',
-        menu: '개요 및 연혁'
+        menu: '개요'
     }
   },
   components: {

@@ -8,7 +8,7 @@
    <!-- Page Header End -->
 
     <div class="text-center mx-auto mt-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px; visibility: visible; animation-delay: 0.1s; animation-name: fadeInUp;">
-      <h1 class="mt-5">오시는 길</h1>
+      <h2 class="mt-5">오시는 길</h2>
     </div>
 
     <!-- Contact Start -->
@@ -45,26 +45,19 @@
                   <h4 class="text-primary" style="margin-top: 3px;">고객센터</h4>
                 </div>
                 <div class="container">
-                  <div class="row">
-                    <div class="col col-sm-5">
+                  <div class="row justify-content-md-center">
+                    <div class="col col-5">
                       <p class="lead text-end">Tel</p>
                     </div>
-                    <div class="col">
-                      <p class="lead text-start">031) 352-7086</p>
+                    <div class="col col-7">
+                      <p class="lead text-start">031) 352-7086 <br>031) 352-7431 </p>
                     </div>
                   </div>
-                  <div class="row">
-                    <div class="col col-sm-5">
-                    </div>
-                    <div class="col">
-                      <p class="lead text-start">031) 352-7431</p>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="col col-sm-5">
+                  <div class="row justify-content-md-center">
+                    <div class="col col-5">
                       <p class="lead text-end">FAX</p>
                     </div>
-                    <div class="col">
+                    <div class="col col-7">
                       <p class="lead text-start">031) 352-7430</p>
                     </div>
                   </div>
@@ -113,6 +106,7 @@ export default {
 </script>
 
 <style>
+
 .lead{
   color:#1A2A36;
   margin-bottom: 0.2em;

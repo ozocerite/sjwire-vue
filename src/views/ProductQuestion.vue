@@ -4,11 +4,16 @@
     <CommonHeader :title="title" :category="category" :menu="menu"/>
     <!-- Page Header End -->
 
+    <div class="container">
+      <n-button>naive-ui</n-button>
+    </div>
+
     </div>
 </template>
 
 <script>
 import CommonHeader from "@/views/common/CommonHeader.vue";
+import { NButton } from 'naive-ui'
 
 export default {
   name: 'ProductQuestion',
@@ -20,7 +25,8 @@ export default {
     }
   },
   components: {
-    CommonHeader
+    CommonHeader,
+    NButton
   }
 }
 </script>

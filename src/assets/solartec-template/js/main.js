@@ -24,8 +24,25 @@
 
     $(document).ready(function(){
         $(document).on('click', '.dropdown-item', navActive);
-
+        changeDropdownAttr();
     });
+
+    $(window).resize(function(){
+        changeDropdownAttr();
+    });
+
+    var changeDropdownAttr = function(){
+        $(document).find('a.nav-link.dropdown-toggle').each(function(){
+            /*When Mobile*/
+            if(window.matchMedia("(max-width: 767px)").matches){
+                $(this).attr('data-bs-toggle','dropdown');
+                $(this).attr('aria-expanded','true');
+            }else{
+                $(this).removeAttr('data-bs-toggle');
+                $(this).removeAttr('aria-expanded');
+            }
+        });
+    }
 
     // Initiate the wowjs
     //    new WOW().init();

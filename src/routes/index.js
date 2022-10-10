@@ -1,7 +1,8 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import MainHome from '../views/MainHome.vue'
 import CeoComment from '../views/CeoComment.vue'
-import CompanyHistory from '../views/CompanyInformation.vue'
+import CompanyInformation from '../views/CompanyInformation.vue'
+import CompanyHistory from '../views/CompanyHistory.vue'
 import CompanyContact from '../views/CompanyContact.vue'
 import ProductInfo from '../views/ProductInfo.vue'
 import CompanyArchive from '../views/CompanyArchive.vue'
@@ -24,9 +25,14 @@ const routeInfos = [
         component : CeoComment          // 인사말
     },
     {
-        path : '/company',
+        path : '/information',
+        name : 'CompanyInformation',
+        component : CompanyInformation      // 회사정보
+    },
+    {
+        path : '/history',
         name : 'CompanyHistory',
-        component : CompanyHistory      // 회사정보
+        component : CompanyHistory      // 회사연혁
     },
     {
         path : '/contact',

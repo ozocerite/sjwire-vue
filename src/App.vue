@@ -50,15 +50,17 @@
             <router-link to="/ceo" class="nav-link dropdown-toggle" active-class="active" name="company">회사소개</router-link>
             <div class="dropdown-menu bg-light m-0">
               <router-link to="/ceo" class="dropdown-item" active-class="active" name="company">대표 인사말</router-link>
-              <router-link to="/company" class="dropdown-item" active-class="active" name="company">회사정보</router-link>
+              <router-link to="/information" class="dropdown-item" active-class="active" name="company">개요</router-link>
+              <router-link to="/history" class="dropdown-item" active-class="active" name="company">연혁</router-link>
             </div>
           </div>
           <div class="nav-item dropdown">
-            <router-link to="/product" class="nav-link dropdown-toggle" active-class="active" name="product">제품</router-link>
+            <router-link to="/product?id=1" class="nav-link dropdown-toggle" active-class="active" name="product">제품</router-link>
             <div class="dropdown-menu bg-light m-0">
-              <router-link to="/product" class="dropdown-item" active-class="active" name="product">제품1</router-link>
-              <router-link to="/product" class="dropdown-item" active-class="active" name="product">제품2</router-link>
-              <router-link to="/product" class="dropdown-item" active-class="active" name="product">제품3</router-link>
+              <router-link to="/product?id=1" class="dropdown-item" active-class="active" name="product">제품1</router-link>
+              <router-link to="/product?id=2" class="dropdown-item" active-class="active" name="product">제품2</router-link>
+              <router-link to="/product?id=3" class="dropdown-item" active-class="active" name="product">제품3</router-link>
+              <router-link to="/product?id=4" class="dropdown-item" active-class="active" name="product">제품4</router-link>
             </div>
           </div>
           <div class="nav-item dropdown">
