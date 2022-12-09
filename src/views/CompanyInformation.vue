@@ -1,176 +1,141 @@
 <template>
   <div id="companyInformation">
     <!-- Page Header Start -->
-    <CommonHeader :title="title" :category="category" :menu="menu"/>
+    <CommonHeader :title="pageInfo.title" :category="pageInfo.category" :menu="pageInfo.menu" ref="header"/>
     <!-- Page Header End -->
 
     <!-- Company Information Start -->
-    <div class="container-fluid bg-light overflow-hidden my-5 px-lg-0">
-      <div class="container about px-lg-0">
-        <div class="row g-0 mx-lg-0">
-          <div class="col-lg-5 ps-lg-0 wow fadeIn" data-wow-delay="0.1s" style="min-height: 400px;">
-            <div class="position-relative h-100">
-              <img class="position-absolute img-fluid w-100 h-100" src="../assets/solartec-template/img/about.jpg" style="object-fit: cover;" alt="">
+    <div class="container">
+      <div class="row">
+        <div class="col mt-lg-4 wow fadeInUp">
+          <div style="text-align: center;">
+            <p class="text-primary lead"><i class="fa fa-leaf" aria-hidden="true"></i> Eco-Friendly Company</p>
+            <h2 class="text-primary">사람과 자연이 함께하는 세진철망입니다</h2>
+            <p class="lead" style="color:#767a76;">우수한 기술력과 환경보호를 위해 부단한 노력으로 미래를 지켜나가겠습니다. </p>
+            <div class="col mt-lg-5">
+              <img src="../assets/img/goal.png" alt="">
             </div>
           </div>
-          <div class="col-lg-7 about-text py-5 wow fadeIn" data-wow-delay="0.5s">
-            <div class="p-lg-5 pe-lg-0">
-              <p class="text-primary lead animated slideInRight"><i class="fa fa-leaf" aria-hidden="true"></i> Eco-Friendly Company</p>
-              <h2 class="text-primary animated slideInRight">사람과 자연이 함께하는 세진철망입니다</h2>
-              <p class="lead" style="color:#767a76;">우수한 기술력과 환경보호를 위해 부단한 노력으로 미래를 지켜나가겠습니다.
-                <br><br>~ 생산품목내역 표 ~
-              </p>
-            </div>
+          <div class="m-5">
+            <n-table size="large">
+              <tbody>
+              <tr>
+                <th>상호명</th>
+                <td>세진건업주식회사 (세진철망)</td>
+                <th>대표이사</th>
+                <td>전 흥 순</td>
+              </tr>
+              <tr>
+                <th>본점소재지</th>
+                <td>경기도 화성시 팔탄면 구장리 113-15 (세진건업) <br> 경기도 화성시 팔탄면 구장리 113-10 (세진철망)</td>
+                <th>연락처</th>
+                <td>TEL : 031) 352-7086 <br> FAX : 031) 352-7431</td>
+              </tr>
+              <tr>
+                <th>설립일</th>
+                <td>1985년 07월</td>
+                <th>주요사업</th>
+                <td>1) 금속구조물 및 창호공사업<br>
+                  - 낙석보호망, 낙석방지책, 녹생토, 각종 휀스 등<br>
+                  2) 체인링크철망, 낙석보호망, 녹생토망, 돌망태, 개비온, 와이어메쉬, 메쉬휀스, 각종휀스 생산</td>
+              </tr>
+              <tr>
+                <th>업체성격</th>
+                <td>주식회사</td>
+                <th>불입자본금</th>
+                <td>225,000,000원</td>
+              </tr>
+              </tbody>
+            </n-table>
           </div>
         </div>
       </div>
     </div>
+
     <!-- Company Information End -->
 
-    <companyContact :headerShow="false"/>
-
+    <!-- Carousel Start -->
+    <div class="row carousel-company">
+      <carousel :settings="settings" :breakpoints="breakpoints" :wrapAround="true">
+        <slide v-for="slide in slideImg" :key="slide">
+          <div class="carousel-inside">
+            <img class="carousel-img" :src="require(`@/assets/img/realshot/${slide}`)">
+          </div>
+        </slide>
+        <template #addons>
+          <navigation />
+          <pagination />
+        </template>
+      </carousel>
+    </div>
+    <!-- Carousel End -->
   </div>
 </template>
 
 <script>
-import CommonHeader from "@/views/common/CommonHeader.vue";
-import CompanyContact from "@/views/CompanyContact.vue";
+import { defineComponent } from "vue";
+import CommonHeader from "@/views/common/CommonHeader";
+import {Carousel, Navigation, Pagination, Slide} from "vue3-carousel";
+import 'vue3-carousel/dist/carousel.css'
+import { WOW } from 'wowjs';
 
-export default {
-  name: 'CompanyInformation',
-  data: function(){
-    return{
-        title: '회사개요',
-        category: '회사소개',
-        menu: '개요'
-    }
-  },
-  components: {
-    CommonHeader,
-    CompanyContact
+const pageInfo = {
+  title: '회사개요',
+  category: '회사소개',
+  menu: '개요'
+}
+
+const slideImg = [
+    'KakaoTalk_20221117_205815412.jpg',
+    'KakaoTalk_20221117_205815412_01.jpg',
+    'KakaoTalk_20221117_205815412_02.jpg',
+    'KakaoTalk_20221117_205815412_03.jpg',
+    'KakaoTalk_20221117_205815412_04.jpg',
+    'KakaoTalk_20221117_205815412_05.jpg',
+    'KakaoTalk_20221117_205815412_06.jpg',
+]
+
+const settings = {
+  itemsToShow: 2,
+  snapAlign: 'start',
+  autoplay:10000,
+}
+// breakpoints are mobile first
+const breakpoints = {
+  700: {
+    itemsToShow: 3,
+    snapAlign: 'start',
   },
 }
+
+export default defineComponent({
+  name: 'CompanyInformation',
+  components: {
+    CommonHeader,
+    Carousel,
+    Slide,
+    Pagination,
+    Navigation,
+  },
+  mounted() {
+    new WOW().init();
+  },
+  setup() {
+    return {
+      pageInfo,
+      slideImg,
+      settings,
+      breakpoints,
+    };
+  }
+});
 </script>
 
 <style>
-.card {
-  border: none!important;
+@media only screen and (max-width: 900px) {
+
 }
-
-/* The actual timeline (the vertical ruler) */
-.main-timeline {
-  position: relative;
-}
-
-/* The actual timeline (the vertical ruler) */
-.main-timeline::after {
-  content: "";
-  position: absolute;
-  width: 3px;
-  background-color: #9f9f9f;
-  top: 0;
-  bottom: 0;
-  left: 50%;
-  margin-left: -1px;
-}
-
-/* Container around content */
-.timeline {
-  position: relative;
-  background-color: inherit;
-  width: 50%;
-}
-
-/* The circles on the timeline */
-.timeline::after {
-  content: "";
-  position: absolute;
-  width: 25px;
-  height: 25px;
-  right: -13px;
-  background-color: #9f9f9f;
-  border: 3px solid #5f676e;
-  top: 15px;
-  border-radius: 50%;
-  z-index: 1;
-}
-
-/* Place the container to the left */
-.left {
-  padding: 0px 40px 20px 0px;
-  left: 0;
-}
-
-/* Place the container to the right */
-.right {
-  padding: 0px 0px 20px 40px;
-  left: 50%;
-}
-
-/* Add arrows to the left container (pointing right) */
-.left::before {
-  content: " ";
-  position: absolute;
-  top: 18px;
-  z-index: 1;
-  right: 30px;
-  border: medium solid white;
-  border-width: 10px 0 10px 10px;
-  border-color: transparent transparent transparent white;
-}
-
-/* Add arrows to the right container (pointing left) */
-.right::before {
-  content: " ";
-  position: absolute;
-  top: 18px;
-  z-index: 1;
-  left: 30px;
-  border: medium solid white;
-  border-width: 10px 10px 10px 0;
-  border-color: transparent white transparent transparent;
-}
-
-/* Fix the circle for containers on the right side */
-.right::after {
-  left: -12px;
-}
-
-/* Media queries - Responsive timeline on screens less than 600px wide */
-@media screen and (max-width: 600px) {
-  /* Place the timelime to the left */
-  .main-timeline::after {
-    left: 31px;
-  }
-
-  /* Full-width containers */
-  .timeline {
-    width: 100%;
-    padding-left: 70px;
-    padding-right: 25px;
-  }
-
-  /* Make sure that all arrows are pointing leftwards */
-  .timeline::before {
-    left: 60px;
-    border: medium solid white;
-    border-width: 10px 10px 10px 0;
-    border-color: transparent white transparent transparent;
-  }
-
-  /* Make sure all circles are at the same spot */
-  .left::after,
-  .right::after {
-    left: 18px;
-  }
-
-  .left::before {
-    right: auto;
-  }
-
-  /* Make all right containers behave like the left ones */
-  .right {
-    left: 0%;
-  }
+.carousel-img{
+  height: 600px;
 }
 </style>

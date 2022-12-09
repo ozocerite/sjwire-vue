@@ -1,29 +1,30 @@
 <template>
-  <div id="main">
+  <div id="mainHome" style="background-color: #fbfcfa;">
+    <!--    Main Page Text    -->
+    <div class="carousel-text animated fadeInLeft">
+      <h3>Since 1985</h3>
+      <h1>세진철망 {{ (new Date()).getFullYear()-1985 }}년의 기술력,<br>사람과 자연이 함께합니다.</h1>
+      <div class="col-12 mt-lg-5">
+        <n-button class="btn-custom" type="success" round>제품 둘러보기</n-button>
+      </div>
+    </div>
+    <!--    Main Page Text    -->
     <!-- Carousel Start -->
-    <carousel  :settings="settings" :breakpoints="breakpoints" :wrapAround="true">
+    <carousel :settings="settings" :breakpoints="breakpoints" :wrapAround="true">
       <slide v-for="slide in slideImg" :key="slide">
-        <div class="owl-carousel-item position-relative" :data-dot="require(`@/assets/solartec-template/img/${slide}`)">
-          <img class="img-fluid" :src="require(`@/assets/solartec-template/img/${slide}`)">
+        <div class="carousel-inside">
+          <img class="carousel-img" :src="require(`@/assets/img/carousel/${slide}`)">
         </div>
       </slide>
-
       <template #addons>
         <navigation />
         <pagination />
       </template>
     </carousel>
     <!-- Carousel End -->
-
-    <!-- Service Start -->
-    <div class="container-xxl py-5">
-      <div class="container">
-        <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px;">
-          <h1 class="text-primary">주요제품</h1>
-          <h4 class="mb-4" style="color:#9e9d9b;">Best Products & Best Price</h4>
-        </div>
+    <div class="container-xxl" style="padding-top: 5em;">
         <div class="row g-4">
-          <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.1s">
+          <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.3s">
             <div class="service-item rounded overflow-hidden">
               <img class="img-fluid" src="../assets/solartec-template/img/img-600x400-1.jpg" alt="">
               <div class="position-relative p-4 pt-0">
@@ -102,49 +103,113 @@
             </div>
           </div>
         </div>
-      </div>
     </div>
     <!-- Service End -->
+    <CompanyContact :headerShow="false"></CompanyContact>
+    <ProductQuotation :headerShow="false"></ProductQuotation>
   </div>
 </template>
 
 <script>
+import { defineComponent } from "vue";
+import CompanyContact from '@/views/CompanyContact.vue';
+import ProductQuotation from "@/views/ProductQuotation.vue";
 import {Carousel, Navigation, Pagination, Slide} from "vue3-carousel";
-import 'vue3-carousel/dist/carousel.css'
+import { WOW } from 'wowjs';
 
-export default {
-  // eslint-disable-next-line vue/multi-word-component-names
-  name: 'Main',
-  data: () => ({
-    slideImg:[
-      'carousel-1.jpg',
-      'carousel-2.jpg',
-      'carousel-3.jpg'
-    ],
-    // carousel settings
-    settings: {
-      itemsToShow: 1,
-      snapAlign: 'start',
-      autoplay:4500,
-    },
-    // breakpoints are mobile first
-    breakpoints: {
-      700: {
-        itemsToShow: 2,
-        snapAlign: 'start',
-      },
-    },
-  }),
+const pageInfo = {
+  title: '회사 연혁',
+  category: '회사소개',
+  menu: '연혁'
+}
+const slideImg = [
+  'slide1.jpg',
+  'slide2.jpg',
+  'slide3.jpg',
+  'slide4.jpg',
+  'slide5.jpg',
+]
+
+const settings = {
+  itemsToShow: 1,
+  snapAlign: 'start',
+  autoplay:5000,
+}
+// breakpoints are mobile first
+const breakpoints = {
+  700: {
+    itemsToShow: 1,
+    snapAlign: 'start',
+  },
+}
+
+export default defineComponent({
+  name: 'MainHome',
+  mounted() {
+    new WOW().init();
+  },
   components: {
+    ProductQuotation,
+    CompanyContact,
     Carousel,
     Slide,
     Pagination,
     Navigation,
   },
-}
+  setup() {
+    return {
+      pageInfo,
+      slideImg,
+      settings,
+      breakpoints,
+    };
+  }
+});
+
 </script>
 
 <style>
+@media only screen and (max-width: 600px) {
+  div.carousel-inside{
+    width: 100%;
+    height: 300px;
+    overflow: hidden;
+  }
+  div.carousel-text{
+    position: absolute;
+    z-index: 9999;
+  }
+  .carousel-text{
+    display: none;
+  }
+}
 
-
+.carousel-inside{
+  height: 600px;
+  overflow: hidden;
+}
+.carousel-text{
+  top:300px;
+  left:15%;
+  position: absolute;
+  z-index: 9999;
+}
+.carousel-img{
+  width: 100%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  object-fit: cover;
+}
+.carousel-text>h1,.carousel-text>h3{
+  color: #FFFFFF;
+}
+.n-button--success-type:hover{
+  --n-color-hover: #0e5240!important;
+  --n-border-hover:1px solid #0e5240!important;
+}
+.btn-primary:hover{
+  border:1px solid #0e5240!important;
+}
 </style>

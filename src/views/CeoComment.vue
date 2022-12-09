@@ -1,16 +1,16 @@
 <template>
   <div id="ceoComment">
     <!-- Page Header Start -->
-    <CommonHeader :title="title" :category="category" :menu="menu"/>
+    <CommonHeader :title="pageInfo.title" :category="pageInfo.category" :menu="pageInfo.menu" ref="header"/>
     <!-- Page Header End -->
 
     <!-- About Start -->
-    <div class="container-fluid bg-light overflow-hidden my-5 px-lg-0">
+    <div class="container-fluid bg-light overflow-hidden my-5 px-lg-0 container-ceo">
       <div class="container about px-lg-0">
         <div class="row g-0 mx-lg-0">
           <div class="col-lg-6 ps-lg-0 wow fadeIn" data-wow-delay="0.1s" style="min-height: 400px;">
             <div class="position-relative h-100">
-              <img class="position-absolute img-fluid w-100 h-100" src="../assets/solartec-template/img/about.jpg" style="object-fit: cover;" alt="">
+              <img class="position-absolute img-fluid w-100 h-100" src="../assets/img/realshot/outdoor1.jpg" style="object-fit: cover;" alt="">
             </div>
           </div>
           <div class="col-lg-6 about-text py-5 wow fadeIn" data-wow-delay="0.5s">
@@ -43,19 +43,33 @@
 </template>
 
 <script>
+import { defineComponent } from "vue";
 import CommonHeader from "@/views/common/CommonHeader";
 
-export default {
+const pageInfo = {
+  title: '세진철망에 오신 것을 환영합니다',
+  category: '회사소개',
+  menu: '대표 인사말'
+}
+
+export default defineComponent({
   name: 'CeoComment',
-  data: function(){
-    return{
-        title: '세진철망에 오신 것을 환영합니다',
-        category: '회사소개',
-        menu: '대표 인사말'
-    }
-  },
   components: {
-    CommonHeader
+    CommonHeader,
+  },
+  setup() {
+    return {
+      pageInfo,
+    };
+  }
+});
+
+</script>
+
+<style>
+@media only screen and (max-width: 600px) {
+  .container-ceo{
+    padding:0 0 0 0!important;
   }
 }
-</script>
+</style>

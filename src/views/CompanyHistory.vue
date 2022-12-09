@@ -1,70 +1,18 @@
 <template>
   <div id="companyInformation">
     <!-- Page Header Start -->
-    <CommonHeader :title="title" :category="category" :menu="menu"/>
+    <CommonHeader :title="pageInfo.title" :category="pageInfo.category" :menu="pageInfo.menu" ref="header"/>
     <!-- Page Header End -->
 
     <!--    Time Line Start-->
     <section style="background-color: #F0F2F5;">
       <div class="container py-5">
         <div class="main-timeline">
-          <div class="timeline left">
+          <div :class="log.class" v-for="log in historyList">
             <div class="card">
               <div class="card-body p-4">
-                <h3>2017</h3>
-                <p class="mb-0">Lorem ipsum dolor sit amet, quo ei simul congue exerci, ad nec admodum perfecto
-                  mnesarchum, vim ea mazim fierent detracto. Ea quis iuvaret expetendis his, te elit voluptua
-                  dignissim per, habeo iusto primis ea eam.</p>
-              </div>
-            </div>
-          </div>
-          <div class="timeline right">
-            <div class="card">
-              <div class="card-body p-4">
-                <h3>2016</h3>
-                <p class="mb-0">Lorem ipsum dolor sit amet, quo ei simul congue exerci, ad nec admodum perfecto
-                  mnesarchum, vim ea mazim fierent detracto. Ea quis iuvaret expetendis his, te elit voluptua
-                  dignissim per, habeo iusto primis ea eam.</p>
-              </div>
-            </div>
-          </div>
-          <div class="timeline left">
-            <div class="card">
-              <div class="card-body p-4">
-                <h3>2015</h3>
-                <p class="mb-0">Lorem ipsum dolor sit amet, quo ei simul congue exerci, ad nec admodum perfecto
-                  mnesarchum, vim ea mazim fierent detracto. Ea quis iuvaret expetendis his, te elit voluptua
-                  dignissim per, habeo iusto primis ea eam.</p>
-              </div>
-            </div>
-          </div>
-          <div class="timeline right">
-            <div class="card">
-              <div class="card-body p-4">
-                <h3>2012</h3>
-                <p class="mb-0">Lorem ipsum dolor sit amet, quo ei simul congue exerci, ad nec admodum perfecto
-                  mnesarchum, vim ea mazim fierent detracto. Ea quis iuvaret expetendis his, te elit voluptua
-                  dignissim per, habeo iusto primis ea eam.</p>
-              </div>
-            </div>
-          </div>
-          <div class="timeline left">
-            <div class="card">
-              <div class="card-body p-4">
-                <h3>2011</h3>
-                <p class="mb-0">Lorem ipsum dolor sit amet, quo ei simul congue exerci, ad nec admodum perfecto
-                  mnesarchum, vim ea mazim fierent detracto. Ea quis iuvaret expetendis his, te elit voluptua
-                  dignissim per, habeo iusto primis ea eam.</p>
-              </div>
-            </div>
-          </div>
-          <div class="timeline right">
-            <div class="card">
-              <div class="card-body p-4">
-                <h3>2007</h3>
-                <p class="mb-0">Lorem ipsum dolor sit amet, quo ei simul congue exerci, ad nec admodum perfecto
-                  mnesarchum, vim ea mazim fierent detracto. Ea quis iuvaret expetendis his, te elit voluptua
-                  dignissim per, habeo iusto primis ea eam.</p>
+                <h4>{{ log.date }}</h4>
+                <p class="mb-0" style="font-size: 1.08em;color: #6c6c6c;" v-html="log.content.replace(/(?:\r\n|\r|\n)/g, '<br/>')"></p>
               </div>
             </div>
           </div>
@@ -77,21 +25,48 @@
 </template>
 
 <script>
-import CommonHeader from "@/views/common/CommonHeader.vue";
+import { defineComponent, ref } from "vue";
+import CommonHeader from "@/views/common/CommonHeader";
+import {getHistoryList} from "@/api/history";
+import router from "@/routes";
 
-export default {
+const pageInfo = {
+  title: '회사 연혁',
+  category: '회사소개',
+  menu: '연혁'
+}
+
+export default defineComponent({
   name: 'CompanyInformation',
-  data: function(){
-    return{
-        title: '회사 연혁',
-        category: '회사소개',
-        menu: '연혁'
-    }
-  },
   components: {
     CommonHeader,
   },
-}
+  mounted() {
+    getHistoryList()
+        .then(response => {
+          const origin = response.data.list;
+          this.historyList = [];
+          for(var i=0; i<origin.length; i++){
+            const history = {
+              date: origin[i].year+'년 '+origin[i].month+'월',
+              class: 'timeline '+(i%2==1?'right':'left'),
+              content: origin[i].content,
+            }
+            this.historyList.push(history);
+          }
+        })
+        .catch(error =>{
+          console.log(error);
+        });
+  },
+  setup() {
+    const historyList = ref([]);
+    return {
+      historyList,
+      pageInfo,
+    };
+  }
+});
 </script>
 
 <style>
@@ -127,10 +102,10 @@ export default {
 .timeline::after {
   content: "";
   position: absolute;
-  width: 25px;
-  height: 25px;
-  right: -13px;
-  background-color: #9f9f9f;
+  width: 15px;
+  height: 15px;
+  right: -8px;
+  background-color: #f0f2f5;
   border: 3px solid #5f676e;
   top: 15px;
   border-radius: 50%;
@@ -139,13 +114,13 @@ export default {
 
 /* Place the container to the left */
 .left {
-  padding: 0px 40px 20px 0px;
+  padding: 0px 40px 20px 15%!important;
   left: 0;
 }
 
 /* Place the container to the right */
 .right {
-  padding: 0px 0px 20px 40px;
+  padding: 0px 15% 20px 40px!important;
   left: 50%;
 }
 
@@ -175,7 +150,7 @@ export default {
 
 /* Fix the circle for containers on the right side */
 .right::after {
-  left: -12px;
+  left: -7px;
 }
 
 /* Media queries - Responsive timeline on screens less than 600px wide */
