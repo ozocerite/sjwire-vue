@@ -12,6 +12,9 @@
             <button type="button" class="btn btn-lg login-button" @click="login">
               <span style="font-size: 0.85em;"><i class="fa fa-comment"/>&nbsp;&nbsp;카카오계정으로 로그인</span>
             </button>
+            <button type="button" class="btn btn-lg admin-login-button" @click="goLoginAdmin" style="margin-left:10px;">
+              <span style="font-size: 0.85em;"><i class="fa fa-user-cog"/>&nbsp;&nbsp;관리자 로그인</span>
+            </button>
           </div>
         </div>
         <div class="col-md-12 ">
@@ -37,7 +40,7 @@ import CommonHeader from "@/views/common/CommonHeader.vue";
 import { defineComponent, ref } from "vue";
 import {kakaoAuth, logout} from "../api/auth.js";
 import router from "@/routes/index.js";
-import { Comment, Edit, ChevronLeft } from "@vicons/fa";
+import { Comment, Edit, ChevronLeft, UserCog } from "@vicons/fa";
 import { useRoute } from "vue-router";
 
 const pageInfo = {
@@ -59,6 +62,7 @@ export default defineComponent({
     Comment,
     Edit,
     ChevronLeft,
+    UserCog,
   },
   setup() {
     const route = useRoute();
@@ -68,8 +72,11 @@ export default defineComponent({
     const login= ()=>{
       kakaoAuth(route);
     }
+    const goLoginAdmin = ()=>{
+      router.push('/adminLogin');
+    }
     const goSignup= ()=>{
-      router.push('/signup')
+      router.push('/signup');
     }
     return {
       userInfo,
@@ -78,6 +85,7 @@ export default defineComponent({
       agree1,
       agree2,
       login,
+      goLoginAdmin,
       goSignup,
     }
   }
@@ -88,13 +96,18 @@ export default defineComponent({
 <style>
 .login-button{
   background-color:#fee500!important;
-  border: 5px solid #fee500!important;;
-  color: #181600!important;;
+  border: 5px solid #fee500!important;
+  color: #181600!important;
 }
 .login-button:hover{
-  background-color: #e0cd24!important;;
-  border: 5px solid #e0cd24!important;;
-  color: #181600!important;;
+  background-color: #e0cd24!important;
+  border: 5px solid #e0cd24!important;
+  color: #181600!important;
+}
+.admin-login-button{
+  border: 1px solid #989894 !important;
+  color: #989894!important;
+  height:56px;
 }
 .signup-button{
   min-width: 230px;
