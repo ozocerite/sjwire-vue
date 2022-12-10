@@ -78,6 +78,7 @@ export default defineComponent({
     const goSignup= ()=>{
       router.push('/signup');
     }
+
     return {
       userInfo,
       pageInfo,
